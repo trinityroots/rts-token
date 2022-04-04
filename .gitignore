@@ -1,3 +1,6 @@
+#Solidity Dependencies
+.deps
+
 # Logs
 logs
 *.log
