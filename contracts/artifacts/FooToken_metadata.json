@@ -163,19 +163,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "MINTER_ROLE",
-				"outputs": [
-					{
-						"internalType": "bytes32",
-						"name": "",
-						"type": "bytes32"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "REWARDER_ROLE",
 				"outputs": [
 					{
@@ -439,21 +426,53 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
+				"inputs": [],
+				"name": "maxSupply",
+				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "",
 						"type": "uint256"
 					}
 				],
-				"name": "mint",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "a",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "b",
+						"type": "uint256"
+					}
+				],
+				"name": "min",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "mintedAmt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -818,11 +837,11 @@
 			]
 		},
 		"contracts/Token.sol": {
-			"keccak256": "0xe550b21ca3628fbda4063f7c3975161b0abf07c97f8b76538aaa2e12bcaeadae",
+			"keccak256": "0xb0ed6bbb78eaceef502e4d3ce4ac390b31bb524f9b6be43c55452d92aaac8ac1",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://6b2489a4a5e49a3f965892daf62b77ae19e6b3d92aebfae912a9f5a877b287a5",
-				"dweb:/ipfs/QmYoTVsSiE4AjGsh5goyxMhhzpLWp6CdZdMo3SwZmJ27w9"
+				"bzz-raw://59fc6b5895835624df388f1d8b5292485bd05a782dcc22c96301321f91ff7f6b",
+				"dweb:/ipfs/QmXaDucj5c7csFoE71dTKpuZ3evFgbqxiijiNrJswTgqD3"
 			]
 		}
 	},
