@@ -6,8 +6,14 @@ import "./RootsERC20.sol";
 
 contract RootsERC20Claimable is RootsERC20 {
 
+    bytes32 public constant REWARDER_ROLE = keccak256("REWARDER_ROLE");
+
     mapping(address => uint) public unclaimed;
     mapping(address => uint) public claimed;
+
+    constructor() {
+        _grantRole(REWARDER_ROLE, msg.sender);
+    }
 
     /**
      * @dev Store value in address mapped with unclaimed amounts

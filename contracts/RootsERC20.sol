@@ -8,7 +8,6 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 contract RootsERC20 is ERC20, AccessControl {
 
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
-    bytes32 public constant REWARDER_ROLE = keccak256("REWARDER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     uint public constant _cap = 100000000 * 10 ** 18;
@@ -17,7 +16,6 @@ contract RootsERC20 is ERC20, AccessControl {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(BURNER_ROLE, msg.sender);
-        _grantRole(REWARDER_ROLE, msg.sender);
     }
 
     function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
