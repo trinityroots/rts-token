@@ -9,12 +9,19 @@
 ## Features
 - Name: Roots Token
 - Symbol: RTS
+- Decimals: 18
 - Max Supply: 100,000,000
 - Transferable
 - Mintable
 - Burnable
 - Claimable
 - RBAC
+
+## Actor Roles
+- Admin
+- Minter
+- Burner
+- Rewarder
 
 
 ## Adding the Custom RPC
