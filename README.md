@@ -7,6 +7,8 @@
 - Explorer: https://testnet.snowtrace.io/address/0xFC55cdd185FC6cE3835B35FB9e1ec392e6f27E4C
 
 ## Features
+- Name: Roots Token
+- Symbol: RTS
 - Max Supply: 100,000,000
 - Transferable
 - Mintable
@@ -24,7 +26,7 @@
 
 
 ## Scripts
-The 'scripts' folder contains example async/await scripts for deploying the 'Storage' contract.
+The 'scripts' folder contains example async/await scripts for deploying contracts.
 For the deployment of any other contract, 'contractName' and 'constructorArgs' should be updated (along with other code if required). 
 Scripts have full access to the web3.js and ethers.js libraries.
 
