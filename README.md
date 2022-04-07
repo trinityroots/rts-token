@@ -1,6 +1,6 @@
 # RTS Token
 
-## Deployed Contract
+## Contract
 - Name: RootsERC20Claimable.sol
 - Contract ID: 0xFC55cdd185FC6cE3835B35FB9e1ec392e6f27E4C
 - Location: Avalanche FUJI C-Chain
