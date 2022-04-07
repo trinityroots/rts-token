@@ -1,4 +1,4 @@
-# RTS Token
+# Roots Token (RTS)
 
 ## Contract
 - Name: RootsERC20Claimable.sol
