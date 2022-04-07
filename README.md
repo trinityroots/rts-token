@@ -8,7 +8,7 @@
 
 ## Features
 - Max Supply: 100,000,000
-- Transferable
+- Transferable ** transferability may be paused and resumed
 - Mintable
 - Burnable
 - Claimable
