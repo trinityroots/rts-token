@@ -2,13 +2,13 @@
 
 ## Contract
 - Name: RootsERC20Claimable.sol
-- Contract ID: 0xFC55cdd185FC6cE3835B35FB9e1ec392e6f27E4C
+- Contract ID: 0x9e156bA65fFF91e6DF4a9459b687C2f8fa5034EF
 - Location: Avalanche FUJI C-Chain
 - Explorer: https://testnet.snowtrace.io/address/0xFC55cdd185FC6cE3835B35FB9e1ec392e6f27E4C
 
 ## Features
 - Max Supply: 100,000,000
-- Transferable ** transferability may be paused and resumed
+- Transferable
 - Mintable
 - Burnable
 - Claimable
