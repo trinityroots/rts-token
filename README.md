@@ -1,14 +1,29 @@
-# rts-token
+# RTS Token
 
-Remix project is present when Remix loads for the very first time or there are no files existing in the File Explorer. 
-It contains 3 directories:
+## Deployed Contract
+- Name: RootsERC20Claimable.sol
+- Contract ID: 0xFC55cdd185FC6cE3835B35FB9e1ec392e6f27E4C
+- Location: Avalanche FUJI C-Chain
+- Explorer: https://testnet.snowtrace.io/address/0xFC55cdd185FC6cE3835B35FB9e1ec392e6f27E4C
 
-1. 'contracts'
-2. 'scripts': Holds two scripts to deploy a contract. It is explained below.
-3. 'tests': contracts with unit tests in Solidity.
+## Features
+- Max Supply: 100,000,000
+- Transferable
+- Mintable
+- Burnable
+- Claimable
+- RBAC
 
-SCRIPTS
 
+## Adding the Custom RPC
+- Network Name: Avalanche FUJI C-Chain
+- New RPC URL: https://api.avax-test.network/ext/bc/C/rpc
+- ChainID: 43113
+- Symbol: AVAX
+- Block Explorer URL: https://cchain.explorer.avax-test.network
+
+
+## Scripts
 The 'scripts' folder contains example async/await scripts for deploying the 'Storage' contract.
 For the deployment of any other contract, 'contractName' and 'constructorArgs' should be updated (along with other code if required). 
 Scripts have full access to the web3.js and ethers.js libraries.
