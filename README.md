@@ -2,9 +2,9 @@
 
 ## Contract
 - Name: RootsERC20Claimable.sol
-- Contract ID: 0x952EbCe752ed41533F1b0BCD0BEbD2d56dF54065
+- Contract ID: 0x7577b9aCEd6Fe4d4875EeFB6F16eB141d4CB732A
 - Location: Avalanche FUJI C-Chain
-- Explorer: https://testnet.snowtrace.io/address/0x952EbCe752ed41533F1b0BCD0BEbD2d56dF54065
+- Explorer: https://testnet.snowtrace.io/address/0x7577b9aCEd6Fe4d4875EeFB6F16eB141d4CB732A
 
 ## Features
 - Name: Roots Token
@@ -15,6 +15,7 @@
 - Mintable
 - Burnable
 - Claimable
+- Redeemable
 - RBAC
 
 ## Actor Roles
