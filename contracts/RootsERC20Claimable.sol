@@ -16,42 +16,14 @@ contract RootsERC20Claimable is RootsERC20 {
     }
 
     /**
-     * @dev Store value in address mapped with unclaimed amounts
-     * @param _account account to store value
-     * @param _amount amount to add to unclaimed
-     */
-    function addUnclaimed(address _account, uint256 _amount) internal {
-        unclaimed[_account] += _amount;
-    }
-
-    /**
-     * @dev Store value in address mapped with unclaimed amounts
-     * @param _account account to store value
-     * @param _amount amount to add to unclaimed
-     */
-    function removeUnclaimed(address _account, uint256 _amount) internal {
-        require(_amount <= unclaimed[_account], "Amount to remove cannot be greater than unclaimed amount");
-        unclaimed[_account] -= _amount;
-    }
-
-    /**
-     * @dev Store value in address mapped with claimed amounts
-     * @param _account account to store value
-     * @param _amount amount to add to claimed
-     */
-    function setClaimed(address _account, uint256 _amount) internal {
-        claimed[_account] += _amount;
-    }
-
-    /**
      * @dev Store value in address mapped with unclaimed amounts using virtual amount (offchain value)
      * @param _account account with value stored
      * @param _amount value from offchain
      */
-    function createClaimable(address _account, uint256 _amount) external onlyRole(REWARDER_ROLE){
+    function createClaimable(address _account, uint256 _amount) public onlyRole(REWARDER_ROLE){
         uint256 _unclaimed = _amount - claimed[_account] - unclaimed[_account];
         require(_unclaimed > 0, 'claimable must be greater than 0');
-        addUnclaimed(_account, _unclaimed);
+        unclaimed[_account] += _amount;
     }
 
     /**
@@ -59,11 +31,12 @@ contract RootsERC20Claimable is RootsERC20 {
      * @param _account account with value stored
      * @param _amount value to remove
      */
-    function removeClaimable(address _account, uint256 _amount) external onlyRole(REWARDER_ROLE){
-        removeUnclaimed(_account, _amount);
+    function removeClaimable(address _account, uint256 _amount) public onlyRole(REWARDER_ROLE){
+        require(_amount <= unclaimed[_account], "Amount to remove cannot be greater than unclaimed amount");
+        unclaimed[_account] -= _amount;
     }
 
-    function min(uint256 a, uint256 b) internal pure returns (uint256) {
+    function min(uint256 a, uint256 b) private pure returns (uint256) {
         return a <= b ? a : b;
     }
 
