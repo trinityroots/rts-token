@@ -10,12 +10,13 @@ contract RootsERC20 is ERC20, AccessControl {
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
-    uint public constant _cap = 100000000 * 10 ** 18;
+    uint public _cap;
 
-    constructor() ERC20("Roots Token", "RTS") {
+    constructor(uint cap) ERC20("Roots Token", "RTS") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(BURNER_ROLE, msg.sender);
+        _cap = cap;
     }
 
     /**
