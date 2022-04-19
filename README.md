@@ -2,9 +2,9 @@
 
 ## Token Contract
 - Name: RootsERC20.sol
-- Contract ID: 0x8803ABa801633D715A359A561Be0c84Ae416C2B6
+- Contract ID: 0x6Cba4Cd6b395193fd33772DA9713325Cc41CC7f8
 - Location: Avalanche FUJI C-Chain
-- Explorer: https://testnet.snowtrace.io/address/0x8803ABa801633D715A359A561Be0c84Ae416C2B6
+- Explorer: https://testnet.snowtrace.io/address/0x6Cba4Cd6b395193fd33772DA9713325Cc41CC7f8
 
 ## Token Features
 - Name: Roots Token
@@ -18,17 +18,17 @@
 - RBAC: Admin, Minter, Burner
 
 
-## Claim Contract
+## Claim
 - Name: RootsERC20Claim.sol
-- Contract ID: 0x0a0971960a16bCb527859AdFCCBAdCf07FF2a71a
+- Contract ID: 0x03e2Dbd707fBC02201a671c5f97aB48daEDfC587
 - Token Interface: Roots Token (RTS)
 - RBAC: Admin
 
 
-## Redeem Contract
+## Redeem
 The redeem contract interfaces with RootsERC20 for the purpose of redeeming rewards.
 - Name: RootsERC20Redeem.sol
-- Contract ID: 0xBeC8619b770688446e097bB9e26C30E8c0ACF72e
+- Contract ID: 0xBfe8114879964ca7188477AA0717f1F4067b1C00
 - Token Interface: Roots Token (RTS)
 - RBAC: Admin
 
