@@ -1,5 +1,5 @@
 #Solidity Artifacts
-contracts/artifacts/
+artifacts
 
 #Solidity Dependencies
 .deps

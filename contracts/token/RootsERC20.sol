@@ -18,26 +18,27 @@ contract RootsERC20 is ERC20, AccessControl {
         _grantRole(BURNER_ROLE, msg.sender);
     }
 
-    function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
-        _mint(to, amount);
-    }
-
-    function burn(address from, uint256 amount) public onlyRole(BURNER_ROLE) {
-        _burn(from, amount);
+    /**
+     * @dev expose mint as public allowing only the minter to execute
+     */
+    function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) returns (bool) {
+        _mint(to, amount); 
+        return true;
     }
 
     /**
-     * @dev Returns the cap on the token's total supply.
+     * @dev expose burn as public allowing only the burner to execute
      */
-    function cap() public view virtual returns (uint256) {
-        return _cap;
+    function burn(address from, uint256 amount) public onlyRole(BURNER_ROLE) returns (bool) {
+        _burn(from, amount);
+        return true;
     }
 
     /**
      * @dev See {ERC20-_mint}.
      */
     function _mint(address account, uint256 amount) internal virtual override {
-        require(ERC20.totalSupply() + amount <= cap(), "ERC20Capped: cap exceeded");
+        require(ERC20.totalSupply() + amount <= _cap, "ERC20Capped: cap exceeded");
         super._mint(account, amount);
     }
     

@@ -2,17 +2,27 @@
 
 pragma solidity >=0.7.0 <0.9.0;
 
-import "./RootsERC20.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract RootsERC20Claimable is RootsERC20 {
+interface IRootsERC20 is IERC20 {
+    function mint(address to, uint256 amount) external returns (bool);
+    function _cap() external view returns (uint);
+}
 
-    bytes32 public constant REWARDER_ROLE = keccak256("REWARDER_ROLE");
+contract RootsERC20Claim is AccessControl {
+
+    IRootsERC20 rootsERC20;
 
     mapping(address => uint) public unclaimed;
     mapping(address => uint) public claimed;
 
     constructor() {
-        _grantRole(REWARDER_ROLE, msg.sender);
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+    }
+
+    function setRootsERC20Contract(address _address) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        rootsERC20 = IRootsERC20(_address);
     }
 
     /**
@@ -20,10 +30,10 @@ contract RootsERC20Claimable is RootsERC20 {
      * @param _account account with value stored
      * @param _amount value from offchain
      */
-    function createClaimable(address _account, uint256 _amount) public onlyRole(REWARDER_ROLE){
-        uint256 _unclaimed = _amount - claimed[_account] - unclaimed[_account];
-        require(_unclaimed > 0, 'claimable must be greater than 0');
-        unclaimed[_account] += _amount;
+    function createClaimable(address _account, uint256 _amount) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        require(_amount > claimed[_account] + unclaimed[_account], "Amount must be greater than the sum of claim and unclaimed");
+        uint diff = _amount - claimed[_account] - unclaimed[_account];
+        unclaimed[_account] += diff;
     }
 
     /**
@@ -31,7 +41,7 @@ contract RootsERC20Claimable is RootsERC20 {
      * @param _account account with value stored
      * @param _amount value to remove
      */
-    function removeClaimable(address _account, uint256 _amount) public onlyRole(REWARDER_ROLE){
+    function removeClaimable(address _account, uint256 _amount) public onlyRole(DEFAULT_ADMIN_ROLE){
         require(_amount <= unclaimed[_account], "Amount to remove cannot be greater than unclaimed amount");
         unclaimed[_account] -= _amount;
     }
@@ -45,11 +55,8 @@ contract RootsERC20Claimable is RootsERC20 {
      */
     function claim() public payable {
         uint _unclaimed = unclaimed[msg.sender];
-        //check if unclaimed is 0, total supply == cap
-        require(_unclaimed > 0, "Unclaimed balance must be greater than 0");
-        require(ERC20.totalSupply() <= cap(), "The max supply has been exhausted.");
         //get distance to max supply
-        uint to_maxSupply = cap() - ERC20.totalSupply();
+        uint to_maxSupply = rootsERC20._cap() - rootsERC20.totalSupply();
         //take minimum to allow minting less when close to max supply
         uint min_unclaimed = min(_unclaimed, to_maxSupply);
         //add unclaimed to claimed
@@ -57,6 +64,7 @@ contract RootsERC20Claimable is RootsERC20 {
         //reset unclaimed
         unclaimed[msg.sender] = 0;
         //mint tokens to sender
-        _mint(msg.sender, min_unclaimed);
+        rootsERC20.mint(msg.sender, min_unclaimed);
     }
+
 }
