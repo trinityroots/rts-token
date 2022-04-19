@@ -7,6 +7,7 @@
 - Explorer: https://testnet.snowtrace.io/address/0x6Cba4Cd6b395193fd33772DA9713325Cc41CC7f8
 
 This token contract uses OpenZeppelin for standard implementations of ERC.
+See the following: https://github.com/OpenZeppelin/openzeppelin-contracts
 
 ## Tokenomics
 ### Features
