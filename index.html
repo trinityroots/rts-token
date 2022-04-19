@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="src/css/style.css">
 	<script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <script src="src/js/claimToken.js"></script>
 </head>
 <body class="is-boxed has-animations">
     <div class="body-wrap">
@@ -41,7 +43,7 @@
 	                        <h1 class="hero-title mt-0">Bringing loyalty to the blockchain</h1>
 	                        <p class="hero-paragraph">Roots Token (RTS) is a utility token created for the sole purpose of being used in the Roots ecosystem.</p>
 	                        <div class="hero-cta">
-                                <a class="button button-primary" href="#">Claim Tokens</a>
+                                <a class="button button-primary" onclick="claimToken()">Claim Tokens</a>
                                 <a class="button" target="_blank" href="https://testnet.snowtrace.io/token/0x6Cba4Cd6b395193fd33772DA9713325Cc41CC7f8">Contract</a>
                             </div>
 						</div>
@@ -230,6 +232,17 @@
                     </div>
                 </div>
             </section>
+
+			<section class="cta section">
+				<div class="container">
+					<div class="cta-inner section-inner">
+						<h3 class="section-title mt-0">Get Test AVAX</h3>
+						<div class="cta-cta">
+							<a class="button button-primary button-wide-mobile" target="_blank" href="https://faucet.avax-test.network/">Get Now</a>
+						</div>
+					</div>
+				</div>
+			</section>
         </main>
 
         <footer class="site-footer">
