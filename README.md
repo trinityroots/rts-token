@@ -22,10 +22,9 @@ See the following: https://github.com/OpenZeppelin/openzeppelin-contracts
 - RBAC: Admin, Minter, Burner
 
 ### Token Earn and Usage
-Roots Token (RTS) is used solely a utility token on the Roots ecosystem. 
+Roots Token (RTS) is used solely a utility token on the Roots ecosystem. Due to the following behaviors, the total supply is expected to fluctuate in accordance to rate of earn and usage.
 - Tokens are earned through activities that contribute to the health of the Roots ecosystem. Through claiming, new tokens are minted into existence.
 - Used tokens are removed from circulation through token burn, thus reducing total supply.
-Due to the above behaviors, the total supply is expected to fluctuate in accordance to rate of earn and usage.
 
 
 ## Claim
