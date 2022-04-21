@@ -1,4 +1,4 @@
-const CLAIM_CONTRACT_ADDRESS = "0x03e2Dbd707fBC02201a671c5f97aB48daEDfC587";
+const CLAIM_CONTRACT_ADDRESS = "0x6bf661E42B46046993d398118a2fbB9989961B52";
 
 const claimABI = [
 	{
@@ -80,7 +80,7 @@ const claimABI = [
 		"inputs": [],
 		"name": "claim",
 		"outputs": [],
-		"stateMutability": "payable",
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -261,6 +261,19 @@ const claimABI = [
 				"internalType": "bool",
 				"name": "",
 				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "rootsERC20",
+		"outputs": [
+			{
+				"internalType": "contract IRootsERC20",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
