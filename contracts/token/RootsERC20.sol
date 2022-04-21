@@ -16,18 +16,13 @@ contract RootsERC20 is ERC20, AccessControl {
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
-    uint public _cap;
-
     /**
      * @dev Initializes the contract giving the deployer all roles and setting max cap
-     * @param cap amount to set as the max capacity
      */
-    constructor(uint cap) ERC20("Roots Token", "RTS") {
+    constructor() ERC20("Roots Token", "RTS") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(BURNER_ROLE, msg.sender);
-        // set max cap
-        _cap = cap;
     }
 
     /**
@@ -48,16 +43,6 @@ contract RootsERC20 is ERC20, AccessControl {
     function burn(address from, uint256 amount) public onlyRole(BURNER_ROLE) returns (bool) {
         _burn(from, amount);
         return true;
-    }
-
-    /**
-     * @dev See {ERC20-_mint}.
-     *
-     * Protecting from minting over the max cap
-     */
-    function _mint(address account, uint256 amount) internal virtual override {
-        require(ERC20.totalSupply() + amount <= _cap, "ERC20Capped: cap exceeded");
-        super._mint(account, amount);
     }
     
 }

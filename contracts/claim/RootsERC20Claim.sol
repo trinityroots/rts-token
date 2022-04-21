@@ -10,7 +10,6 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
  */
 interface IRootsERC20 is IERC20 {
     function mint(address to, uint256 amount) external returns (bool);
-    function _cap() external view returns (uint);
 }
 
 /**
@@ -75,16 +74,12 @@ contract RootsERC20Claim is AccessControl {
     function claim() public payable {
         require(unclaimed[msg.sender] > 0, "No tokens claimable.");
         uint _unclaimed = unclaimed[msg.sender];
-        //get distance to max supply
-        uint to_maxSupply = rootsERC20._cap() - rootsERC20.totalSupply();
-        //take minimum to allow minting less when close to max supply
-        uint min_unclaimed = min(_unclaimed, to_maxSupply);
         //add unclaimed to claimed
-        claimed[msg.sender] += min_unclaimed;
+        claimed[msg.sender] += _unclaimed;
         //reset unclaimed
         unclaimed[msg.sender] = 0;
         //mint tokens to sender
-        rootsERC20.mint(msg.sender, min_unclaimed);
+        rootsERC20.mint(msg.sender, _unclaimed);
     }
 
 }
