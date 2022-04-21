@@ -17,7 +17,7 @@ interface IRootsERC20 is IERC20 {
  */
 contract RootsERC20Claim is AccessControl {
 
-    IRootsERC20 rootsERC20;
+    IRootsERC20 public rootsERC20;
 
     mapping(address => uint) public unclaimed;
     mapping(address => uint) public claimed;
@@ -62,16 +62,9 @@ contract RootsERC20Claim is AccessControl {
     }
 
     /**
-     * @dev Pure function for retrieving minimum of two unsigned integers
-     */
-    function min(uint256 a, uint256 b) private pure returns (uint256) {
-        return a <= b ? a : b;
-    }
-
-    /**
      * @dev Transfer unclaimed value
      */
-    function claim() public payable {
+    function claim() public {
         require(unclaimed[msg.sender] > 0, "No tokens claimable.");
         uint _unclaimed = unclaimed[msg.sender];
         //add unclaimed to claimed

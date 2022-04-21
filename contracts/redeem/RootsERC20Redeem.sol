@@ -18,7 +18,7 @@ interface IRootsERC20 is IERC20 {
  */
 contract RootsERC20Redeem is AccessControl {
 
-    IRootsERC20 rootsERC20;
+    IRootsERC20 public rootsERC20;
 
     mapping(address => uint) public redeemed;
 

@@ -29,7 +29,7 @@ Roots Token (RTS) is used solely a utility token on the Roots ecosystem. Due to 
 
 ## Claim
 - Name: RootsERC20Claim.sol
-- Contract ID: 0x56957B5Ed132Ea015C5968bbdBA9e2Ad5ed21ED2
+- Contract ID: 0x6bf661E42B46046993d398118a2fbB9989961B52
 - Token Interface: Roots Token (RTS)
 - RBAC: Admin
 
@@ -50,7 +50,7 @@ This diff value is then added to unclaimed as an update, ready to be claimed. Th
 ## Redeem
 The redeem contract interfaces with RootsERC20 for the purpose of redeeming rewards.
 - Name: RootsERC20Redeem.sol
-- Contract ID: 0xE08788dc279C8061d03d12C7EbFF02F5a8e506d3
+- Contract ID: 0xCc8CCAaBF2248358B57fec7C2f62158e019F63cF
 - Token Interface: Roots Token (RTS)
 - RBAC: Admin
 
