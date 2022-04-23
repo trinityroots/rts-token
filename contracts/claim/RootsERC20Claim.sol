@@ -4,21 +4,24 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "../lib/RBACTransparent.sol";
 
 /**
  * @dev defining functions we will use in this contract through an interface
  */
-interface IRootsERC20 is IERC20 {
+interface IRootsERC20 is IERC20{
     function mint(address to, uint256 amount) external returns (bool);
-    function _cap() external view returns (uint);
 }
 
 /**
  * @dev Creating a claim service that distributes the ERC20 token
  */
-contract RootsERC20Claim is AccessControl {
+contract RootsERC20Claim is RBACTransparent {
 
-    IRootsERC20 rootsERC20;
+    using SafeMath for uint256;
+
+    IRootsERC20 public rootsERC20;
 
     mapping(address => uint) public unclaimed;
     mapping(address => uint) public claimed;
@@ -46,10 +49,10 @@ contract RootsERC20Claim is AccessControl {
      * The offchain value sent must be greater than the total of claimed and unclaimed stored onchain
      */
     function createClaimable(address _account, uint256 _amount) public onlyRole(DEFAULT_ADMIN_ROLE) {
-        require(_amount > claimed[_account] + unclaimed[_account], "Amount must be greater than the sum of claim and unclaimed");
-        uint diff = _amount - claimed[_account] - unclaimed[_account];
+        require(_amount > claimed[_account].add(unclaimed[_account]), "Amount must be greater than the sum of claim and unclaimed");
+        uint diff = _amount.sub(claimed[_account]).sub(unclaimed[_account]);
         // The diff is value offchain - value onchain
-        unclaimed[_account] += diff;
+        unclaimed[_account] = unclaimed[_account].add(diff);
     }
 
     /**
@@ -59,32 +62,21 @@ contract RootsERC20Claim is AccessControl {
      */
     function removeClaimable(address _account, uint256 _amount) public onlyRole(DEFAULT_ADMIN_ROLE){
         require(_amount <= unclaimed[_account], "Amount to remove cannot be greater than unclaimed amount");
-        unclaimed[_account] -= _amount;
-    }
-
-    /**
-     * @dev Pure function for retrieving minimum of two unsigned integers
-     */
-    function min(uint256 a, uint256 b) private pure returns (uint256) {
-        return a <= b ? a : b;
+        unclaimed[_account] =  unclaimed[_account].sub(_amount);
     }
 
     /**
      * @dev Transfer unclaimed value
      */
-    function claim() public payable {
+    function claim() public {
         require(unclaimed[msg.sender] > 0, "No tokens claimable.");
         uint _unclaimed = unclaimed[msg.sender];
-        //get distance to max supply
-        uint to_maxSupply = rootsERC20._cap() - rootsERC20.totalSupply();
-        //take minimum to allow minting less when close to max supply
-        uint min_unclaimed = min(_unclaimed, to_maxSupply);
         //add unclaimed to claimed
-        claimed[msg.sender] += min_unclaimed;
+        claimed[msg.sender] = claimed[msg.sender].add(_unclaimed);
         //reset unclaimed
         unclaimed[msg.sender] = 0;
         //mint tokens to sender
-        rootsERC20.mint(msg.sender, min_unclaimed);
+        rootsERC20.mint(msg.sender, _unclaimed);
     }
 
 }
