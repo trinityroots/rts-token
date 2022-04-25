@@ -2,9 +2,9 @@
 
 ## Token Contract
 - Name: RootsERC20.sol
-- Contract ID: 0x6Cba4Cd6b395193fd33772DA9713325Cc41CC7f8
+- Contract ID: 0xF8B314be7800288a81210E3ba6A29Aaf883a9E8d
 - Location: Avalanche FUJI C-Chain
-- Explorer: https://testnet.snowtrace.io/address/0x6Cba4Cd6b395193fd33772DA9713325Cc41CC7f8
+- Explorer: https://testnet.snowtrace.io/address/0xF8B314be7800288a81210E3ba6A29Aaf883a9E8d
 
 This token contract uses OpenZeppelin for standard implementations of ERC.
 See the following: https://github.com/OpenZeppelin/openzeppelin-contracts
@@ -14,7 +14,7 @@ See the following: https://github.com/OpenZeppelin/openzeppelin-contracts
 - Name: Roots Token
 - Symbol: RTS
 - Decimals: 18
-- Max Supply: 100,000,000
+- Max Supply: None
 - Expiration: None
 - Transferable
 - Mintable
@@ -29,7 +29,7 @@ Roots Token (RTS) is used solely a utility token on the Roots ecosystem. Due to 
 
 ## Claim
 - Name: RootsERC20Claim.sol
-- Contract ID: 0x03e2Dbd707fBC02201a671c5f97aB48daEDfC587
+- Contract ID: 0x6bf661E42B46046993d398118a2fbB9989961B52
 - Token Interface: Roots Token (RTS)
 - RBAC: Admin
 
@@ -50,7 +50,7 @@ This diff value is then added to unclaimed as an update, ready to be claimed. Th
 ## Redeem
 The redeem contract interfaces with RootsERC20 for the purpose of redeeming rewards.
 - Name: RootsERC20Redeem.sol
-- Contract ID: 0xBfe8114879964ca7188477AA0717f1F4067b1C00
+- Contract ID: 0xCc8CCAaBF2248358B57fec7C2f62158e019F63cF
 - Token Interface: Roots Token (RTS)
 - RBAC: Admin
 
