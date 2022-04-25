@@ -4,11 +4,12 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 /**
  * @dev defining functions we will use in this contract through an interface
  */
-interface IRootsERC20 is IERC20 {
+interface IRootsERC20 is IERC20{
     function mint(address to, uint256 amount) external returns (bool);
 }
 
@@ -16,6 +17,10 @@ interface IRootsERC20 is IERC20 {
  * @dev Creating a claim service that distributes the ERC20 token
  */
 contract RootsERC20Claim is AccessControl {
+
+    using SafeMath for uint256;
+
+    event NewClaim(address _address, uint _amount);
 
     IRootsERC20 public rootsERC20;
 
@@ -44,11 +49,11 @@ contract RootsERC20Claim is AccessControl {
      *
      * The offchain value sent must be greater than the total of claimed and unclaimed stored onchain
      */
-    function createClaimable(address _account, uint256 _amount) public onlyRole(DEFAULT_ADMIN_ROLE) {
-        require(_amount > claimed[_account] + unclaimed[_account], "Amount must be greater than the sum of claim and unclaimed");
-        uint diff = _amount - claimed[_account] - unclaimed[_account];
+    function addClaimable(address _account, uint256 _amount) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        require(_amount > claimed[_account].add(unclaimed[_account]), "Amount must be greater than the sum of claim and unclaimed");
+        uint diff = _amount.sub(claimed[_account]).sub(unclaimed[_account]);
         // The diff is value offchain - value onchain
-        unclaimed[_account] += diff;
+        unclaimed[_account] = unclaimed[_account].add(diff);
     }
 
     /**
@@ -58,7 +63,7 @@ contract RootsERC20Claim is AccessControl {
      */
     function removeClaimable(address _account, uint256 _amount) public onlyRole(DEFAULT_ADMIN_ROLE){
         require(_amount <= unclaimed[_account], "Amount to remove cannot be greater than unclaimed amount");
-        unclaimed[_account] -= _amount;
+        unclaimed[_account] =  unclaimed[_account].sub(_amount);
     }
 
     /**
@@ -68,11 +73,13 @@ contract RootsERC20Claim is AccessControl {
         require(unclaimed[msg.sender] > 0, "No tokens claimable.");
         uint _unclaimed = unclaimed[msg.sender];
         //add unclaimed to claimed
-        claimed[msg.sender] += _unclaimed;
+        claimed[msg.sender] = claimed[msg.sender].add(_unclaimed);
         //reset unclaimed
         unclaimed[msg.sender] = 0;
         //mint tokens to sender
         rootsERC20.mint(msg.sender, _unclaimed);
+        //emit event
+        emit NewClaim(msg.sender, _unclaimed);
     }
 
 }

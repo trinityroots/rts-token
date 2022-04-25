@@ -4,6 +4,7 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 /**
  * @dev defining functions we will use in this contract through an interface
@@ -17,6 +18,10 @@ interface IRootsERC20 is IERC20 {
  * @dev Creating a redeem service for ERC20
  */
 contract RootsERC20Redeem is AccessControl {
+
+    using SafeMath for uint256;
+
+    event NewRedeem(address sender, uint value);
 
     IRootsERC20 public rootsERC20;
 
@@ -43,8 +48,9 @@ contract RootsERC20Redeem is AccessControl {
     function redeem() public payable {
         require(msg.value > 0, "Value cannot be zero");
         require(msg.value <= rootsERC20.balanceOf(msg.sender), "Balance insufficient");
-        redeemed[msg.sender] += msg.value;
+        redeemed[msg.sender] = redeemed[msg.sender].add(msg.value);
         rootsERC20.burn(msg.sender, msg.value);
+        emit NewRedeem(msg.sender, msg.value);
     }
 
 }
