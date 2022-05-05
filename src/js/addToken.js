@@ -1,7 +1,7 @@
 const tokenAddress = '0x25a5b89eDCA30932C833379E4ec482bD9523388c';
 const tokenSymbol = 'RTS';
 const tokenDecimals = 18;
-const tokenImage = 'https://www.roots.tech/web/image/website/1/favicon?unique=b4d8ee0';
+const tokenImage = 'https://trinityroots.github.io/rts-token/roots-logo.ico';
 
 async function addTokenFunction() {
 
