@@ -2,9 +2,9 @@
 
 ## Token Contract
 - Name: RootsERC20.sol
-- Contract ID: 0xF8B314be7800288a81210E3ba6A29Aaf883a9E8d
+- Contract ID: 0x25a5b89eDCA30932C833379E4ec482bD9523388c
 - Location: Avalanche FUJI C-Chain
-- Explorer: https://testnet.snowtrace.io/address/0xF8B314be7800288a81210E3ba6A29Aaf883a9E8d
+- Explorer: https://testnet.snowtrace.io/address/0x25a5b89eDCA30932C833379E4ec482bD9523388c
 
 This token contract uses OpenZeppelin for standard implementations of ERC.
 See the following: https://github.com/OpenZeppelin/openzeppelin-contracts
