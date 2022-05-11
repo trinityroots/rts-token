@@ -20,9 +20,6 @@ interface IRootsERC20 is IERC20 {
  */
 contract RBACTransparent is AccessControl{
 
-    bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
-    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
     IRootsERC20 public rootsERC20;
 
     // role list for transparency
@@ -52,6 +49,11 @@ contract RBACTransparent is AccessControl{
         roleList[role].push(account);
     }
 
+    /**
+     * @dev Search for index of an item in an array
+     * @param arr address array to search
+     * @param searchFor address to search for
+     */
     function indexOf(address[] memory arr, address searchFor) pure private returns (uint) {
         for (uint i = 0; i < arr.length; i++) {
             if (arr[i] == searchFor) {
@@ -61,6 +63,11 @@ contract RBACTransparent is AccessControl{
         revert("Item not found");
     }
 
+    /**
+     * @dev Remove an address in the role list
+     * @param role bytes32 representation of role
+     * @param index integer index of item to remove
+     */
     function removeRole(bytes32 role, uint index) private {
         roleList[role][index] = roleList[role][roleList[role].length - 1];
         roleList[role].pop();
