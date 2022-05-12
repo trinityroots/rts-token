@@ -3,16 +3,8 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "../../interfaces/IRootsERC20.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-
-/**
- * @dev defining functions we will use in this contract through an interface
- */
-interface IRootsERC20 is IERC20 {
-    // Redeem is assumed to burn the token and thus reduce totalSupply
-    function burn(address from, uint256 amount) external returns (bool);
-}
 
 /**
  * @dev Creating a redeem service for ERC20
