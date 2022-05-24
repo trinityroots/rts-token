@@ -77,6 +77,20 @@ contract RootsERC20RBACTransparent is AccessControl{
     }
 
     /**
+     * @dev Execute renounceRole of ERC20 using the interface
+     * @param role bytes32 representation of role
+     * @param account address
+     */
+    function erc20RenounceRole(bytes32 role, address account) public {
+        require(account == msg.sender, "AccessControl: can only renounce roles for self");
+        require(rootsERC20.hasRole(role, account), "This account doesn't have this role.");
+        rootsERC20.revokeRole(role, account);
+        //update list
+        uint idx = indexOf(roleList[role], account);
+        removeRole(role, idx);
+    }
+
+    /**
      * @dev return account list of members in a role
      * @param role bytes32 representation of role
      */
