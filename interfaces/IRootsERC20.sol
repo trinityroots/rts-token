@@ -13,4 +13,5 @@ interface IRootsERC20 is IERC20 {
     function grantRole(bytes32 role, address account) external;
     function hasRole(bytes32 role, address account) external returns (bool);
     function revokeRole(bytes32 role, address account) external;
+    function renounceRole(bytes32 role, address account) external;
 }
