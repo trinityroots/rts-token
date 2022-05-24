@@ -14,7 +14,7 @@ This token contract uses [Open Zeppelin](https://github.com/OpenZeppelin/openzep
 | Contract | Address | RBAC | Description
 | --- | --- | --- | --- |
 | RootsERC20BatchOperation | 0x910AA8d9f4164ff882f462afE27487Df08e64666 | Yes | Adds Batch Operations to RTS |
-| RootsERC20RBACTransparent | 0x7c49dD789D5671dD6FFc31F431854E2Ee442875b | Yes | Allows execution of rbac operations while storing addresses |
+| RootsERC20RBACTransparent | 0x5Cb00EdDe543d8Fd6D727174BeB430A19fd4c788 | Yes | Allows execution of rbac operations while storing addresses |
 | RootsERC20Redeem |  | Yes | Redeem feature for RTS |
 | RootsERC20Claim |  | Yes | Claim feature for RTS |
 
