@@ -8,7 +8,7 @@ import "../../interfaces/IRootsERC20.sol";
 /**
  * @dev for the purpose of visibility this contract interfaces with ERC20 to store addresses and their respective roles
  */
-contract RBACTransparent is AccessControl{
+contract RootsERC20RBACTransparent is AccessControl{
 
     IRootsERC20 public rootsERC20;
 
