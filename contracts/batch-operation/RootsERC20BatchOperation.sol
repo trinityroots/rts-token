@@ -3,16 +3,18 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 import "../../interfaces/IRootsERC20.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
 
 /**
  * @dev Setting batch operations for transfer
  */
-contract RootsERC20BatchOperation {
+contract RootsERC20BatchOperation is AccessControl {
 
     IRootsERC20 public rootsERC20;
 
     struct TransferRow {
-        address account;
+        address from;
+        address to;
         uint amount;
     }
 
@@ -37,7 +39,7 @@ contract RootsERC20BatchOperation {
      */
     function batchTransfer(TransferRow[] memory rows) public returns (bool) {
         for (uint i = 0; i < rows.length; i++) {
-            rootsERC20.transfer(rows[i].account, rows[i].amount);
+            rootsERC20.transferFrom(rows[i].from, rows[i].to, rows[i].amount);
         }
         return true;
     }

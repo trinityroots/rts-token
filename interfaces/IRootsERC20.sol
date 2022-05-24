@@ -8,7 +8,6 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
  * @dev defining functions we will use in our contracts through an interface
  */
 interface IRootsERC20 is IERC20 {
-    function transfer(address to, uint256 amount) external returns (bool);
     function mint(address to, uint256 amount) external returns (bool);
     function burn(address from, uint256 amount) external returns (bool);
     function grantRole(bytes32 role, address account) external;
