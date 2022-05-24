@@ -32,7 +32,8 @@ contract RootsERC20RBACTransparent is AccessControl{
      * @param role bytes32 representation of role
      * @param account address
      */
-    function erc20GrantRole(bytes32 role, address account) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    function erc20GrantRole(bytes32 role, address account) public {
+        require(rootsERC20.hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "AccessControl: You must be an admin to grant roles.");
         require(!rootsERC20.hasRole(role, account), "This account already has this role.");
         rootsERC20.grantRole(role, account);
         //update list
@@ -68,7 +69,8 @@ contract RootsERC20RBACTransparent is AccessControl{
      * @param role bytes32 representation of role
      * @param account address
      */
-    function erc20RevokeRole(bytes32 role, address account) public onlyRole(DEFAULT_ADMIN_ROLE) {
+    function erc20RevokeRole(bytes32 role, address account) public {
+        require(rootsERC20.hasRole(DEFAULT_ADMIN_ROLE, msg.sender), "AccessControl: You must be an admin to revoke roles.");
         require(rootsERC20.hasRole(role, account), "This account doesn't have this role.");
         rootsERC20.revokeRole(role, account);
         //update list
