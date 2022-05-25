@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 /**
  * @dev Setting batch operations for transfer
  */
-contract RootsERC20BatchOperation is AccessControl {
+contract RootsERC20BatchTransfer is AccessControl {
 
     IRootsERC20 public rootsERC20;
 
