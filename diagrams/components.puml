@@ -1,0 +1,9 @@
+@startuml "RTS Components"
+
+[AccessControl] <|-- [RootsERC20]
+[ERC20] <|-- [RootsERC20]
+IRootsERC20 --|> IERC20
+IRootsERC20 ..> [RootsERC20] : use
+IRootsERC20 <.. [FeatureContracts] : use
+
+@enduml
