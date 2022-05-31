@@ -13,12 +13,13 @@ This token contract uses [Open Zeppelin](https://github.com/OpenZeppelin/openzep
 
 | Contract | Address | RBAC | Description
 | --- | --- | --- | --- |
-| RootsERC20BatchOperation | 0x910AA8d9f4164ff882f462afE27487Df08e64666 | Yes | Adds Batch Operations to RTS |
-| RootsERC20RBACTransparent | 0x5Cb00EdDe543d8Fd6D727174BeB430A19fd4c788 | Yes | Allows execution of rbac operations while storing addresses |
+| RootsERC20BatchTransfer | 0x910AA8d9f4164ff882f462afE27487Df08e64666 | Yes | Adds Batch Transfer to RTS |
+| RootsERC20RBACTransparent | 0x5Cb00EdDe543d8Fd6D727174BeB430A19fd4c788 | Yes | Allows execution of RBAC operations while storing addresses |
 | RootsERC20Redeem |  | Yes | Redeem feature for RTS |
 | RootsERC20Claim |  | Yes | Claim feature for RTS |
 | RootsERC20DEV | 0x70CA6B5A8caBa68c70879f7693dF2C4e970a99C4 | Yes | Token used for development purposes
-| RootsERC20BatchOperationDEV | 0x3cD0123B17F6A3b203ee90E8483eB2C1Fe672992 | Yes | Adds Batch Operations to RTSDEV |
+| RootsERC20BatchTransferDEV | 0x3cD0123B17F6A3b203ee90E8483eB2C1Fe672992 | Yes | Adds Batch Transfer to RTSDEV |
+| RootsERC20BatchSupplyDEV | 0x58ad4Cc468aB6283AfEbF3F485eA46d15edDf178 | Yes | Adds Batch Mint/Burn to RTSDEV
 
 ## Tokenomics
 ### Features
