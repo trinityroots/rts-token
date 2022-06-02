@@ -15,7 +15,7 @@ This token contract uses [Open Zeppelin](https://github.com/OpenZeppelin/openzep
 | --- | --- | --- | --- |
 | RootsERC20BatchTransfer | 0x910AA8d9f4164ff882f462afE27487Df08e64666 | Yes | Adds Batch Transfer to RTS |
 | RootsERC20RBACTransparent | 0x5Cb00EdDe543d8Fd6D727174BeB430A19fd4c788 | Yes | Allows execution of RBAC operations while storing addresses |
-| RootsERC20Redeem |  | Yes | Redeem feature for RTS |
+| RootsERC20RedeemInternal | 0xD7F01c962E7763ed6F639f508fb509B949681065  | Yes | Redeem feature for RTS |
 | RootsERC20Claim |  | Yes | Claim feature for RTS |
 | RootsERC20DEV | 0x70CA6B5A8caBa68c70879f7693dF2C4e970a99C4 | Yes | Token used for development purposes
 | RootsERC20BatchTransferDEV | 0x3cD0123B17F6A3b203ee90E8483eB2C1Fe672992 | Yes | Adds Batch Transfer to RTSDEV |
