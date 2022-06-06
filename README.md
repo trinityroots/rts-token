@@ -19,7 +19,8 @@ This token contract uses [Open Zeppelin](https://github.com/OpenZeppelin/openzep
 | RootsERC20Claim |  | Yes | Claim feature for RTS |
 | RootsERC20DEV | 0x70CA6B5A8caBa68c70879f7693dF2C4e970a99C4 | Yes | Token used for development purposes
 | RootsERC20BatchTransferDEV | 0x3cD0123B17F6A3b203ee90E8483eB2C1Fe672992 | Yes | Adds Batch Transfer to RTSDEV |
-| RootsERC20BatchSupplyDEV | 0x58ad4Cc468aB6283AfEbF3F485eA46d15edDf178 | Yes | Adds Batch Mint/Burn to RTSDEV
+| RootsERC20BatchSupplyDEV | 0x58ad4Cc468aB6283AfEbF3F485eA46d15edDf178 | Yes | Adds Batch Mint/Burn to RTSDEV |
+| RootsERC20RedeemInternalDEV | 0x2ea3324E3296a616bf2Bf876D86979EcA82475FF | Yes | Redeem feature for RTSDEV |
 
 ## Tokenomics
 ### Features
